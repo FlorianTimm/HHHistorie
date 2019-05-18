@@ -61751,6 +61751,71 @@ var _proj = require("ol/proj.js");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var layer = [new _Tile.default({
+  title: "Geobasis GB",
+  opacity: 0.3,
+  source: new _TileWMS.default({
+    url: 'https://geodienste.hamburg.de/HH_WMS_Kombi_DISK_GB?',
+    params: {
+      'LAYERS': '6,10,18,26,2,14,22,30',
+      'TILED': true
+    },
+    serverType: 'geoserver',
+    // Countries have transparency, so do not fade tiles:
+    transition: 0
+  })
+}), new _Tile.default({
+  title: "1880-1889",
+  visible: false,
+  source: new _TileWMS.default({
+    url: 'https://geodienste.hamburg.de/HH_WMS_Vermessungskarten_1880_1925?',
+    params: {
+      'LAYERS': '4',
+      'TILED': true
+    },
+    serverType: 'geoserver',
+    // Countries have transparency, so do not fade tiles:
+    transition: 0
+  })
+}), new _Tile.default({
+  title: "1890-1899",
+  visible: false,
+  source: new _TileWMS.default({
+    url: 'https://geodienste.hamburg.de/HH_WMS_Vermessungskarten_1880_1925?',
+    params: {
+      'LAYERS': '3',
+      'TILED': true
+    },
+    serverType: 'geoserver',
+    // Countries have transparency, so do not fade tiles:
+    transition: 0
+  })
+}), new _Tile.default({
+  title: "1900-1910",
+  visible: false,
+  source: new _TileWMS.default({
+    url: 'https://geodienste.hamburg.de/HH_WMS_Vermessungskarten_1880_1925?',
+    params: {
+      'LAYERS': '2',
+      'TILED': true
+    },
+    serverType: 'geoserver',
+    // Countries have transparency, so do not fade tiles:
+    transition: 0
+  })
+}), new _Tile.default({
+  title: "1910-1915",
+  visible: false,
+  source: new _TileWMS.default({
+    url: 'https://geodienste.hamburg.de/HH_WMS_Vermessungskarten_1880_1925?',
+    params: {
+      'LAYERS': '1',
+      'TILED': true
+    },
+    serverType: 'geoserver',
+    // Countries have transparency, so do not fade tiles:
+    transition: 0
+  })
+}), new _Tile.default({
   title: "1925-1930",
   visible: false,
   source: new _TileWMS.default({
@@ -61919,6 +61984,7 @@ document.getElementById("karte").addEventListener("change", function (e) {
   layer.forEach(function (ele) {
     ele.setVisible(false);
   });
+  layer[0].setVisible(true);
   layer[e.target.value].setVisible(true);
   document.getElementById("ueberschrift").innerHTML = layer[e.target.value].get("title");
 });
@@ -61950,7 +62016,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37999" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "40597" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
