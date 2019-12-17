@@ -9,7 +9,7 @@ new TileLayer({
         title: "Geobasis GB",
         opacity: 0.3,
           source: new TileWMS({
-            url: 'https://geodienste.hamburg.de/HH_WMS_Kombi_DISK_GB?',
+            url: 'https://geodienste.hamburg.de/HH_WMS_Geobasiskarten_GB?',
             params: {'LAYERS': '6,10,18,26,2,14,22,30', 'TILED': true},
             serverType: 'geoserver',
             // Countries have transparency, so do not fade tiles:
@@ -61,8 +61,22 @@ new TileLayer({
             // Countries have transparency, so do not fade tiles:
             transition: 0
           })
-        }),
-
+    }),
+    
+    new TileLayer({
+      title: "1916-1925",
+      visible: false,
+      source: new TileWMS({
+        url: 'https://geodienste.hamburg.de/HH_WMS_Vermessungskarten_1880_1925?',
+        params: {
+          'LAYERS': '0',
+          'TILED': true
+        },
+        serverType: 'geoserver',
+        // Countries have transparency, so do not fade tiles:
+        transition: 0
+      })
+    }),
 
     new TileLayer({
         title: "1925-1930",
