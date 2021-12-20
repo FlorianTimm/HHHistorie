@@ -1,17 +1,10 @@
 import 'ol/ol.css';
-import {
-  Map,
-  View
-} from 'ol';
+import { Map, View } from 'ol';
 import TileLayer from 'ol/layer/Tile';
 import TileWMS from 'ol/source/TileWMS.js';
-import {
-  fromLonLat
-} from 'ol/proj.js';
+import { fromLonLat } from 'ol/proj.js';
 import TileSource from 'ol/source/Tile';
-import layerUrlsJson from './layer.json'
-
-let layerUrls: { name: string, opacity?: number, url: string, layer: string, visible?: boolean }[] = layerUrlsJson;
+import { layerUrls } from './layer'
 
 let layer: TileLayer<TileSource>[] = [];
 layerUrls.forEach((values) => {
