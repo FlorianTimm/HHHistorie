@@ -21,7 +21,7 @@ layerUrls.forEach((values) => {
     source: new TileWMS({
       url: values.url,
       params: {
-        'LAYERS': values.url,
+        'LAYERS': values.layer,
         'TILED': true
       }
     })
