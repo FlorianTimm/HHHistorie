@@ -2,7 +2,7 @@
   "name": "hhhistorie",
   "version": "1.0.0",
   "description": "Historische Karten Hamburg",
-  "base":"./src/",
+  "base": "./src/",
   "scripts": {
     "start": "vite",
     "build": "vite build",

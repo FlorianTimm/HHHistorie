@@ -13,11 +13,11 @@ import layerUrlsJson from './layer.json'
 
 let layerUrls: { name: string, opacity?: number, url: string, layer: string, visible?: boolean }[] = layerUrlsJson;
 
-let layer:TileLayer<TileSource>[] = [];
+let layer: TileLayer<TileSource>[] = [];
 layerUrls.forEach((values) => {
   layer.push(new TileLayer({
-    opacity: values.opacity??1,
-    visible: values.visible??false,
+    opacity: values.opacity ?? 1,
+    visible: values.visible ?? false,
     source: new TileWMS({
       url: values.url,
       params: {
@@ -37,12 +37,14 @@ const map = new Map({
   })
 });
 
-document.getElementById("karte").addEventListener("change", function (e) {
+let schieber = <HTMLInputElement>document.getElementById("karte");
+schieber.max = (layerUrls.length - 1).toFixed();
+
+schieber.addEventListener("change", function (e) {
   layer.forEach(function (ele) {
     ele.setVisible(false);
   });
   layer[0].setVisible(true);
-  let id = (<HTMLInputElement>document.getElementById("karte")).value
-  layer[id].setVisible(true);
-  document.getElementById("ueberschrift").innerHTML = layerUrls[id].get("name");
+  layer[schieber.value].setVisible(true);
+  document.getElementById("ueberschrift").innerHTML = layerUrls[schieber.value].name;
 });
